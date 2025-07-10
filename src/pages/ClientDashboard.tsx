@@ -158,16 +158,6 @@ const ClientDashboard = () => {
               </Link>
             </div>
             <div className="flex items-center space-x-3">
-              <Button variant="outline" size="icon" asChild>
-                <Link to="/marketplace">
-                  <Search className="w-4 h-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="icon" asChild>
-                <Link to="/messages">
-                  <Bell className="w-4 h-4" />
-                </Link>
-              </Button>
               <ThemeToggle />
               <Button variant="outline" asChild>
                 <Link to="/profile">
