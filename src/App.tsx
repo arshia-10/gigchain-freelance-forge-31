@@ -23,6 +23,7 @@ import Analytics from "./pages/Analytics";
 import Messages from "./pages/Messages";
 import PostJob from "./pages/PostJob";
 import FindTalent from "./pages/FindTalent";
+import FreelancerProfile from "./pages/FreelancerProfile";
 import Payments from "./pages/Payments";
 import IssueCredentials from "./pages/IssueCredentials";
 import UserManagementPage from "./pages/admin/UserManagement";
@@ -74,6 +75,7 @@ const App = () => (
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/post-job" element={<PostJob />} />
             <Route path="/find-talent" element={<FindTalent />} />
+            <Route path="/freelancer/:id" element={<FreelancerProfile />} />
             <Route path="/payments" element={<Payments />} />
             <Route path="/issue-credentials" element={<IssueCredentials />} />
             <Route path="*" element={<NotFound />} />

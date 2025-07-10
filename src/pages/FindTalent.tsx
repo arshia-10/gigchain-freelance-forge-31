@@ -21,9 +21,12 @@ import {
   Briefcase,
   Award
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 const FindTalent = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
@@ -106,6 +109,18 @@ const FindTalent = () => {
     
     return matchesSearch && matchesCategory;
   });
+
+  const handleMessage = (freelancerName: string) => {
+    toast({
+      title: "Starting Conversation",
+      description: `Opening chat with ${freelancerName}...`,
+    });
+    navigate('/messages');
+  };
+
+  const handleViewProfile = (freelancerId: number) => {
+    navigate(`/freelancer/${freelancerId}`);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950">
@@ -252,11 +267,19 @@ const FindTalent = () => {
                           </div>
                         </div>
                         <div className="flex space-x-2">
-                          <Button variant="outline" size="sm">
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={() => handleMessage(freelancer.name)}
+                          >
                             <MessageCircle className="w-4 h-4 mr-2" />
                             Message
                           </Button>
-                          <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600">
+                          <Button 
+                            size="sm" 
+                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                            onClick={() => handleViewProfile(freelancer.id)}
+                          >
                             View Profile
                           </Button>
                         </div>
